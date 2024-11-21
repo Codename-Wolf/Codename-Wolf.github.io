@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Homepage - Game Store</title>
+  <link rel="stylesheet" href="gridstilius.css">
+  <style>
+    .favorites-list {
+      text-align: center;
+      margin-left: 250px;
+      margin-right: 250px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      background: rgba(255, 255, 255, 0.1);
+    }
+    .favorites-list h3 {
+      margin: 0;
+    }
+    .favorite-item {
+      margin: 5px 0;
+      cursor: pointer;
+    }
+    .highlighted {
+      color: rgb(0, 229, 255);
+      font-weight: bold;
+    }
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0, 0, 0, 0.717);
+      padding-top: 250px;
+    }
+
+    .modal-content {
+      background-color: #323a47;
+      margin: 5% auto;
+      padding: 10px;
+      border: 1px solid #000000;
+      width: 80%;
+      max-width: 300px;
+      text-align: center;
+    }
+
+    .close {
+      color: #aaa;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+    }
+
+    .close:hover,
+    .close:focus {
+      color: black;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .profile-btn {
+      position: absolute;
+      top: 8px;
+      right: 30px;
+      background-color: rgba(255, 255, 255, 0.1);
+      color: white;
+      padding: 10px 20px;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+      .logout-btn {
+      display: block;
+      margin: 0 auto;
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      text-align: center;
+    }
+
+    .logout-btn:hover {
+      background-color: darkred;
+    }
+
+    .themeToggle {
+      position: absolute;
+      top: 8px;
+      right: 120px;
+      background-color: rgba(255, 255, 255, 0.1);
+      color: white;
+      padding: 10px 20px;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header with Logo, Navigation, and Search Bar -->
+  <header class="header">
+  <button class="profile-btn" id="profileBtn">Profile</button>
+
+    <div class="logo">
+      <img src="images/logo.png" alt="Game Store Logo">
+    </div>
+    <nav class="nav">
+      <ul>
+        <li><a href="index.html">Store</a></li>
+        <li><a href="#">Library</a></li>
+        <li><a href="community.html">Community</a></li>
+        <li><a href="support.html">Support</a></li>
+      </ul>
+    </nav>
+    <div class="search">
+      <input type="text" placeholder="Search...">
+    </div>
+  </header>
+
+<!-- Modal -->
+<div id="profileModal" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <p id="modalMessage"></p>
+    <button id="modalActionBtn" style="display:none;"></button>
+    <button id="logoutBtn" class="logout-btn" style="display: none;">Log out</button>
+  </div>
+</div>
+
+
+  <!-- Main Featured Games Section -->
+  <section class="featured-games">
+    <div class="featured">
+      <img src="images/godofwar.jpg" alt="God of War poster">
+      <p>God of War: Action & Adventure</p>
+      <button class="favorite-btn">Favorite</button>
+    </div>
+    <div class="featured">
+      <img src="images/firewatch.jpg" alt="Firewatch poster">
+      <p>Firewatch: Mystery & Exploration</p>
+      <button class="favorite-btn">Favorite</button>
+    </div>
+  </section>
+
+  <!-- Favorites List -->
+    <div class="favorites-list">
+      <h3>Your Favorites:</h3>
+      <ul id="favorites"></ul>
+    </div>
+
+  <!-- Categories Section -->
+  <section class="categories">
+    <h2>Categories</h2>
+    <div class="grid-container">
+      <a href="#" class="category">Action</a>
+      <a href="#" class="category">Adventure</a>
+      <a href="#" class="category">RPG</a>
+      <a href="#" class="category">Sports</a>
+      <a href="#" class="category">Strategy</a>
+      <a href="#" class="category">Indie</a>
+    </div>
+  </section>
+
+  <!-- Game Listings Section -->
+  <section class="game-listings">
+    <h2>Games on Sale</h2>
+    <div class="game-grid">
+      <div class="game-card">
+        <img src="images/dbd.png" alt="Dead by Daylight">
+        <h3>Dead by Daylight</h3>
+        <p>Price: $19.99</p>
+        <button>Add to Cart</button>
+      </div>
+      <div class="game-card">
+        <img src="images/leagueoflegends.jpg" alt="League of Legends">
+        <h3>League of Legends</h3>
+        <p>Price: $59.99</p>
+        <button>Add to Cart</button>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Games Table Section -->
+  <section class="games-table">
+    <h2>Popular Games Ratings</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Game Title</th>
+          <th>Release Date</th>
+          <th>Rating</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>God of War</td>
+          <td>April 20, 2018</td>
+          <td>9.5/10</td>
+        </tr>
+        <tr>
+          <td>Firewatch</td>
+          <td>February 9, 2016</td>
+          <td>8.5/10</td>
+        </tr>
+        <tr>
+          <td>League of Legends</td>
+          <td>October 27, 2009</td>
+          <td>9.0/10</td>
+        </tr>
+        <tr>
+          <td>Dead by Daylight</td>
+          <td>June 14, 2016</td>
+          <td>7.5/10</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- Promotional Banner Section -->
+  <section class="promotions">
+    <h2>Special Promotions</h2>
+    <img src="images/support.png" alt="Special Promotions Banner" style="width:100%; border-radius: 5px;">
+  </section>
+
+  <!-- Footer Section -->
+  <footer>
+    <p>&copy; 2024 Game Store. All rights reserved.</p>
+    <nav>
+      <ul>
+        <li><a href="policy.html">Privacy Policy</a></li>
+        <li><a href="terms.html">Terms of Service</a></li>
+        <li><a href="support.html">Support</a></li>
+      </ul>
+    </nav>
+  </footer>
+
+  <!--Animation Javascript-->
+  <script>
+   const banner = document.querySelector(".promotions img");
+   let colorChange = 0;
+   let increasing = true;
+
+  function colorTintBanner() {
+    if (increasing) {
+    colorChange += 5;
+    if (colorChange >= 255) {
+      increasing = false;
+      }
+    } else {
+    colorChange -= 5;
+    if (colorChange <= 0) {
+      increasing = true;
+     }
+    }
+
+    banner.style.filter = `sepia(${colorChange / 255}) hue-rotate(${colorChange}deg)`;
+  }
+
+  // Start loop
+  setInterval(colorTintBanner, 30);
+  </script>
+
+<script>
+  const favoriteButtons = document.querySelectorAll(".favorite-btn");
+  const favoritesList = document.getElementById("favorites");
+
+  // Function 1: Add to Favorites
+  function addToFavorites(gameTitle) {
+    // Check if the game is already in the favorites list
+    const existingFavorites = favoritesList.querySelectorAll("li");
+    for (const item of existingFavorites) {
+      if (item.textContent === gameTitle) {
+        alert(`${gameTitle} is already in your favorites!`);
+        return; // Stop further execution if duplicate found
+      }
+    }
+
+    // If not a duplicate, add the game to the list
+    const listItem = document.createElement("li");
+    listItem.textContent = gameTitle;
+    listItem.className = "favorite-item";
+    
+    // Add hover to highlight item
+    listItem.addEventListener("mouseover", highlightGame);
+    listItem.addEventListener("mouseout", (event) => {
+      event.target.classList.remove("highlighted");
+    });
+
+    favoritesList.appendChild(listItem);
+  }
+
+  // Function 2: Highlight Game
+  function highlightGame(event) {
+    event.target.classList.add("highlighted");
+  }
+
+  favoriteButtons.forEach((button, index) => {
+    button.addEventListener("click", () => {
+      const gameTitle = button.previousElementSibling.textContent;
+      addToFavorites(gameTitle);
+    });
+  });
+</script>
+
+<script>
+  const profileBtn = document.getElementById('profileBtn');
+  const modal = document.getElementById('profileModal');
+  const closeBtn = document.getElementsByClassName('close')[0];
+  const modalMessage = document.getElementById('modalMessage');
+  const modalActionBtn = document.getElementById('modalActionBtn');
+  const logoutBtn = document.getElementById('logoutBtn');
+
+  // Check if the user is already registered (stored in localStorage for the current session)
+  const userRegistered = localStorage.getItem('userRegistered');
+
+  profileBtn.addEventListener('click', () => {
+    modal.style.display = 'block';
+    
+    if (userRegistered) {
+      const username = localStorage.getItem('username');
+      modalMessage.textContent = `Welcome, ${username}.`;
+      
+      modalActionBtn.style.display = 'none';
+      logoutBtn.style.display = 'block';
+
+      // Logout functionality
+      logoutBtn.addEventListener('click', () => {
+        // Clear user data from localStorage
+        localStorage.removeItem('userRegistered');
+        localStorage.removeItem('username');
+        localStorage.removeItem('email');
+        
+        modalMessage.textContent = "You have successfully logged out.";
+        
+        logoutBtn.style.display = 'none';
+        modalActionBtn.style.display = 'block';
+
+        // Force a page reload after a short delay
+        setTimeout(() => {
+          location.reload(true); // Force reload without cache
+        }, 1500);
+      });
+    } else {
+      modalMessage.textContent = "You are not registered yet.";
+      modalActionBtn.textContent = "Register Now";
+      modalActionBtn.style.display = 'block';
+      modalActionBtn.onclick = () => {
+        window.location.href = 'registration.html';
+      };
+
+      logoutBtn.style.display = 'none';
+    }
+  });
+
+  closeBtn.addEventListener('click', () => {
+    modal.style.display = 'none';
+  });
+
+  window.addEventListener('click', (event) => {
+    if (event.target === modal) {
+      modal.style.display = 'none';
+    }
+  });
+</script>
+    
+</body>
+</html>

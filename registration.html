@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register - Game Store</title>
+  <link rel="stylesheet" href="gridstilius.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #222;
+      color: #fff;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .registration-container {
+      background-color: #323a47;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+      max-width: 400px;
+      width: 100%;
+    }
+
+    .registration-container h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    .form-group input {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #555;
+      border-radius: 5px;
+      background-color: #444;
+      color: #fff;
+    }
+
+    .form-group input:focus {
+      border-color: #007bff;
+      outline: none;
+    }
+
+    .error-message {
+      color: red;
+      font-size: 0.9em;
+      margin-top: 5px;
+    }
+
+    .register-btn {
+      display: block;
+      width: 100%;
+      padding: 10px;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+      text-align: center;
+    }
+
+    .register-btn:hover {
+      background-color: #0056b3;
+    }
+
+    .success-message {
+      color: rgb(17, 220, 17);
+      font-size: 1em;
+      text-align: center;
+      margin-top: 10px;
+    }
+
+    .login-link {
+      display: block;
+      text-align: center;
+      margin-top: 15px;
+      color: #00e5ff;
+      text-decoration: none;
+    }
+
+    .login-link:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="registration-container">
+    <h2>Register</h2>
+    <form id="registrationForm">
+      <div class="form-group">
+        <label for="username">Username</label>
+        <input type="text" id="username" name="username" required>
+        <p id="usernameError" class="error-message" style="display: none;">Username is required.</p>
+      </div>
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" required>
+        <p id="emailError" class="error-message" style="display: none;">Please enter a valid email address.</p>
+      </div>
+      <button type="submit" class="register-btn">Register</button>
+    </form>
+    <p id="successMessage" class="success-message" style="display: none;">Registration successful!</p>
+    <a href="index.html" class="login-link">Back to Home</a>
+  </div>
+
+  <script>
+    // Registration Form Validation and Storage
+    const registrationForm = document.getElementById('registrationForm');
+    const usernameInput = document.getElementById('username');
+    const emailInput = document.getElementById('email');
+    const usernameError = document.getElementById('usernameError');
+    const emailError = document.getElementById('emailError');
+    const successMessage = document.getElementById('successMessage');
+
+    registrationForm.addEventListener('submit', (event) => {
+      event.preventDefault(); // Prevent form from submitting normally
+
+      // Reset error messages
+      usernameError.style.display = 'none';
+      emailError.style.display = 'none';
+
+      let hasError = false;
+
+      // Validate username
+      if (usernameInput.value.trim() === '') {
+        usernameError.style.display = 'block';
+        hasError = true;
+      }
+
+      // Validate email with regex
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(emailInput.value.trim())) {
+        emailError.style.display = 'block';
+        window.alert('Please enter a valid email address.');
+        hasError = true;
+      }
+
+      if (!hasError) {
+        // Save user data to localStorage
+        localStorage.setItem('userRegistered', true);
+        localStorage.setItem('username', usernameInput.value.trim());
+        localStorage.setItem('email', emailInput.value.trim());
+
+        successMessage.style.display = 'block';
+        successMessage.textContent = 'Registration successful! Redirecting to home page...';
+        setTimeout(() => {
+          window.location.href = 'index.html';
+        }, 4000);
+      }
+    });
+  </script>
+</body>
+</html>

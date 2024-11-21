@@ -1,0 +1,362 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,body {
+  margin: 0;
+  height: 100%;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #1b2838;
+  color: white;
+  line-height: 1.6;
+  display: flex;
+  flex-direction: column;
+}
+
+a {
+  font-size: 150%;
+  color: #66c0f4;
+  text-decoration: none;
+}
+
+p {
+  font-family: 'Georgia', serif;
+  font-size: 19px;
+  font-weight: 400;
+  color: #f1f1f1;
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 5px;
+  line-height: 1.8;
+  letter-spacing: 0.5px;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+
+ul {
+  list-style: none;
+}
+
+/* Header with Flex */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #171a21;
+  padding: 15px 30px;
+}
+
+.logo {
+  padding: 10px;
+  border: 3px solid rgb(255, 0, 0);
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+@keyframes zoomIn {
+  0% {
+    transform: scale(0.4);
+  }
+  20% {
+    transform: scale(0.6);
+  }
+  40% {
+    transform: scale(0.8);
+  }
+  60% {
+    transform: scale(1.1);
+  }
+  80% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes bounceIn {
+  0% {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 0.8;
+  }
+  70% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.category:hover {
+  animation: bounceIn 0.6s ease-out forwards;
+  background-color: #5492b0;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+
+.logo:hover img {
+  animation: zoomIn 1s ease-in-out forwards;
+}
+
+/* Game Features Section */
+.game-features, .games-table, .shopping-advantages, .promotions {
+  margin: 20px 30px;
+  padding: 15px;
+  background-color: #2a2f38;
+  border-radius: 5px;
+}
+
+/* Table styles */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+th, td {
+  padding: 10px;
+  border: 1px solid #66c0f4;
+  text-align: left;
+}
+
+th {
+  background-color: #171a21;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #323a47;
+}
+
+
+.logo img {
+  height: 80px;
+  width: auto;
+  transition: transform 0.3s ease;
+}
+
+.nav ul {
+  display: flex;
+  gap: 20px;
+}
+
+.search input {
+  padding: 8px;
+  background-color: #323a47;
+  color: white;
+  border: 1px solid #66c0f4;
+  border-radius: 5px;
+}
+
+/* Featured Games Section with Grid */
+.featured-games {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  margin: 20px 30px;
+}
+
+.featured img {
+  width: 100%;
+  border-radius: 5px;
+}
+
+.featured p {
+  margin-top: 10px;
+  text-align: center;
+}
+
+.categories {
+  margin: 20px 30px;
+}
+
+.categories h2 {
+  text-align: center;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  padding: 20px 0;
+}
+
+.category {
+  background-color: #323a47;
+  padding: 20px;
+  border-radius: 5px;
+  text-align: center;
+  color: white;
+  display: block;
+  transition: background-color 0.3s ease;
+}
+
+.category:hover {
+  background-color: #66c0f4;
+}
+
+/* Game Listings Section */
+.game-listings {
+  margin: 30px;
+}
+
+.game-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.game-card {
+  background-color: #323a47;
+  padding: 20px;
+  text-align: center;
+  border-radius: 5px;
+}
+
+.game-card img {
+  height: 200px;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+
+.game-card h3 {
+  margin: 10px 0;
+}
+button {
+  background-color: #66c0f4;
+  color: white;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s ease, transform 0.2s ease, color 0.3s ease;
+  -webkit-transition: background-color 0.3s ease, transform 0.2s ease, color 0.3s ease;
+  -moz-transition: background-color 0.3s ease, transform 0.2s ease, color 0.3s ease;
+  -ms-transition: background-color 0.3s ease, transform 0.2s ease, color 0.3s ease;
+  -o-transition: background-color 0.3s ease, transform 0.2s ease, color 0.3s ease;
+}
+
+button:hover {
+  background-color: #5492b0;
+}
+
+button:active {
+  background-color: #4caf50;
+  transform: scale(0.95);
+}
+
+button:focus {
+  outline: none; 
+  background-color: #4caf50;
+  color: #fff;
+}
+
+/* Footer Section */
+footer {
+  background-color: #171a21;
+  padding: 20px;
+  text-align: center;
+}
+
+footer nav ul {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .featured-games {
+    grid-template-columns: 1fr;
+  }
+
+  .grid-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .game-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Support Form Styles */
+.support-form {
+  margin: 20px 30px;
+  padding: 20px;
+  background-color: #2a2f38;
+  border-radius: 5px;
+}
+
+.support-form label {
+  display: block;
+  margin-bottom: 10px;
+  color: white;
+}
+
+.support-form input, 
+.support-form select, 
+.support-form textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  background-color: #323a47;
+  border: 1px solid #66c0f4;
+  border-radius: 5px;
+  color: white;
+}
+
+.support-form button {
+  background-color: #66c0f4;
+  color: white;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.support-form button:hover {
+  background-color: #5492b0;
+}
+
+.faq-section {
+  margin: 20px 30px;
+  padding: 20px;
+  background-color: #2a2f38;
+  border-radius: 5px;
+}
+
+.faq-section h3 {
+  margin-top: 10px;
+}
+
+.faq-section p {
+  margin-bottom: 20px;
+}
+
+.carousel-item img{
+  height: 80vh;
+  object-fit: cover;
+  border-radius: 6%;
+  -webkit-border-radius: 6%;
+  -moz-border-radius: 6%;
+  -ms-border-radius: 6%;
+  -o-border-radius: 6%;
+}
+
+.carousel {
+  padding: 3%;
+}

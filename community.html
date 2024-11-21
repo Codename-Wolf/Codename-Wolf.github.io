@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Community - Game Store</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="gridstilius.css">
+  <link rel="stylesheet" href="https://cdn.plyr.io/3.7.8/plyr.css">
+  <script src="https://cdn.plyr.io/3.7.8/plyr.js"></script>
+
+  <style>
+    .navbar-brand {
+      margin-left: 1%;
+    }
+    .dropdown-item {
+      color: white;
+    }
+    .nav-item {
+      font-size: 25px;
+    }
+    .footerText {
+      font-size: 20px;
+    }
+    .carouselTitle {
+      padding-top: 40px;
+      color: gray;
+      text-align: center;
+    }
+    .post-box {
+      border: 1px solid #ffffff;
+      padding: 15px;
+      margin-bottom: 15px;
+      border-radius: 8px;
+    }
+    .post-title {
+      font-size: 20px;
+      font-weight: bold;
+    }
+    .post-meta {
+      font-size: 14px;
+      color: gray;
+    }
+    .post-text {
+      margin-top: 10px;
+    }
+    .expand-button {
+      margin-top: 10px;
+    }
+    .page {
+      display: none;
+    }
+    .page.active {
+      display: block;
+    }
+
+      
+    .modal-content {
+      background-color: #2c2f33;
+      color: #ffffff;
+    }
+
+    .modal-header {
+      background-color: #23272a;
+      border-bottom: 1px solid #444;
+    }
+
+    .carousel-control-prev,
+    .carousel-control-next {
+      background-color: transparent !important;
+      border: none !important;
+      box-shadow: none !important;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="index.html">
+          <div class="logo">
+            <img src="images/logo.png" alt="Game Store Logo">
+          </div>
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNavDropdown"
+          aria-controls="navbarNavDropdown"
+          aria-expanded="false"
+          aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+    
+        <!-- Collapsible Menu -->
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" href="community.html">Community</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Library</a>
+            </li>
+            <!-- Dropdown Menu -->
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                id="navbarDropdown"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false">
+                More
+              </a>
+              <ul class="dropdown-menu bg-dark" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item" href="policy.html">Privacy Policy</a></li>
+                <li><a class="dropdown-item" href="terms.html">Terms of Service</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>    
+  </header>
+
+  <!-- Carousel Section -->
+  <h1 class="carouselTitle">Artworks</h1>
+  <div id="gameCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="images/artwork_dbd.jpg" class="d-block w-100" alt="Dead by Daylight Artwork">
+      </div>
+      <div class="carousel-item">
+        <img src="images/artwork_firewatch.png" class="d-block w-100" alt="Firewatch Artwork">
+      </div>
+      <div class="carousel-item">
+        <img src="images/artwork_godofwar.jpg" class="d-block w-100" alt="God of War Artwork">
+      </div>
+      <div class="carousel-item">
+        <img src="images/artwork_lol.jpg" class="d-block w-100" alt="League of Legends Artwork">
+      </div>
+      <div class="carousel-item">
+        <img src="images/artwork_rocket.jpg" class="d-block w-100" alt="Rocket League Artwork">
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#gameCarousel" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#gameCarousel" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+
+  <!-- Videos Section -->
+  <div class="container mt-5">
+    <h1 class="carouselTitle">Videos</h1>
+
+    <!-- Video Player Container -->
+    <div class="video-container">
+      <video id="videoPlayer" class="plyr" controls>
+        <source src="videos/league.mp4" type="video/mp4">
+        <source src="videos/godofwar.mp4" type="video/mp4">
+        <source src="videos/firewatch.mp4" type="video/mp4">
+        Your browser does not support video!
+      </video>
+    </div>
+
+    <!-- Video Selection Buttons -->
+    <div class="video-buttons mt-3 text-center">
+      <button class="btn btn-secondary mx-2" onclick="switchVideo('videos/league.mp4', 'videos/godofwar.mp4')">League of Legends Tourney</button>
+      <button class="btn btn-secondary mx-2" onclick="switchVideo('videos/godofwar.mp4', 'videos/firewatch.mp4')">God of War Ragnarok Teaser</button>
+      <button class="btn btn-secondary mx-2" onclick="switchVideo('videos/firewatch.mp4', 'videos/league.mp4')">Firewatch</button>
+    </div>
+  </div>
+
+  <!-- Posts Section -->
+  <div class="container mt-5">
+    <h1 class="carouselTitle">Posts</h1>
+
+<!-- Page 1 -->
+<div class="page active" id="page-1">
+  <div class="post-box">
+    <div class="post-title">Looking for friends to play with!</div>
+    <div class="post-meta">Game: Dead by Daylight | Author: GreasedUpMonkey23</div>
+    <div class="post-text">Hey there! New to the game, would love to have some fellow gamers to join...</div>
+    <button 
+      class="btn btn-primary expand-button" 
+      data-bs-toggle="modal" 
+      data-bs-target="#postModal"
+      data-title="Looking for friends to play with!"
+      data-meta="Game: Dead by Daylight | Author: GreasedUpMonkey23"
+      data-text="Hey there! New to the game, would love to have some fellow gamers to join me in the trials!"
+    >Expand</button>
+  </div>
+
+  <div class="post-box">
+    <div class="post-title">How to uninstall?</div>
+    <div class="post-meta">Game: League of Legends | Author: skibidigamer69420</div>
+    <div class="post-text">This might seriously be the worst game ever made oh my god, please tell...</div>
+    <button 
+      class="btn btn-primary expand-button" 
+      data-bs-toggle="modal" 
+      data-bs-target="#postModal"
+      data-title="How to uninstall?"
+      data-meta="Game: League of Legends | Author: skibidigamer69420"
+      data-text="This might seriously be the worst game ever made oh my god, please tell me how to uninstall now."
+    >Expand</button>
+  </div>
+</div>
+
+<!-- Page 2 -->
+<div class="page" id="page-2">
+  <div class="post-box">
+    <div class="post-title">How to beat Kharolys?</div>
+    <div class="post-meta">Game: God of War | Author: BlueWafflezz</div>
+    <div class="post-text">Anyone have tips or tricks how to beat Kharolys? Seriously tired of...</div>
+    <button 
+      class="btn btn-primary expand-button" 
+      data-bs-toggle="modal" 
+      data-bs-target="#postModal"
+      data-title="How to beat Kharolys?"
+      data-meta="Game: God of War | Author: BlueWafflezz"
+      data-text="Anyone have tips or tricks how to beat Kharolys? Seriously tired of this guy, he keeps spamming the headbutt attack when I get close-range and his massive bald head deals insane damage, and I have late-game armor!"
+    >Expand</button>
+  </div>
+
+  <div class="post-box">
+    <div class="post-title">WHY GAME CRASH??</div>
+    <div class="post-meta">Game: Half-Life 3 | Author: ROBERT_BOBERT</div>
+    <div class="post-text">EVERY TIME I RUN GAME IT GOES BLACK SCREEN AND CRASH 2...</div>
+    <button 
+      class="btn btn-primary expand-button" 
+      data-bs-toggle="modal" 
+      data-bs-target="#postModal"
+      data-title="WHY GAME CRASH??"
+      data-meta="Game: Half-Life 3 | Author: ROBERT_BOBERT"
+      data-text="EVERY TIME I RUN GAME IT GOES BLACK SCREEN AND CRASH 2 SECONDS LATER PLZZ HELP!!!!!!"
+    >Expand</button>
+  </div>
+</div>
+
+    <!-- Pagination -->
+  <nav aria-label="Page navigation">
+    <ul class="pagination justify-content-center">
+      <li class="page-item"><a class="page-link" href="#" onclick="switchPage(1, event)">1</a></li>
+      <li class="page-item"><a class="page-link" href="#" onclick="switchPage(2, event)">2</a></li>
+    </ul>
+  </nav>
+  </div>
+
+  <!-- Modal -->
+  <div class="modal fade" id="postModal" tabindex="-1" aria-labelledby="postModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="postModalLabel">Post Title</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body" id="postModalContent" style="font-size: 1.2rem;">
+          Post content goes here.
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>  
+
+
+  <!-- Footer -->
+  <footer class="bg-dark text-white py-3">
+    <div class="container">
+      <p class="mb-0">&copy; 2024 Game Store | <a href="policy.html" class="footerText">Privacy Policy</a> | <a href="terms.html" class="footerText">Terms of Service</a></p>
+    </div>
+  </footer>
+
+  <script>
+    function switchPage(pageNumber, event) {
+      event.preventDefault(); // Prevent default anchor behavior
+  
+      // Hide all pages
+      document.querySelectorAll('.page').forEach(page => {
+        page.classList.remove('active');
+        page.style.display = 'none';
+      });
+  
+      // Show the selected page
+      const selectedPage = document.getElementById(`page-${pageNumber}`);
+      if (selectedPage) {
+        selectedPage.classList.add('active');
+        selectedPage.style.display = 'block';
+      }
+  
+      // Update pagination active state
+      document.querySelectorAll('.pagination .page-link').forEach(link => {
+        link.classList.remove('active');
+      });
+      event.target.classList.add('active');
+    }
+  </script>
+  
+
+  <script>
+    document.querySelectorAll('.expand-button').forEach(button => {
+      button.addEventListener('click', function () {
+        const title = this.getAttribute('data-title');
+        const meta = this.getAttribute('data-meta');
+        const text = this.getAttribute('data-text');
+
+        // Update modal content
+        document.getElementById('postModalLabel').textContent = title;
+        document.getElementById('postModalContent').innerHTML = `
+          <p><strong>${meta}</strong></p>
+          <p>${text}</p>
+        `;
+      });
+    });
+  </script>
+
+  <script>
+    const player = new Plyr('#videoPlayer');
+
+    function switchVideo(mp4Source, webmSource) {
+      player.source = {
+        type: 'video',
+        sources: [
+          { src: mp4Source, type: 'video/mp4' },
+          { src: webmSource, type: 'video/webm' }
+        ]
+      };
+      player.play();
+    }
+  </script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.min.js"></script>
+
+</body>
+</html>
